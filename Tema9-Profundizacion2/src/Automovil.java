@@ -1,5 +1,3 @@
-import java.util.Arrays;
-import java.util.Collections;
 
 public class Automovil {
 
@@ -141,28 +139,82 @@ public class Automovil {
 		this.precio = precio;
 	}
 
-	public static void ordenaCadenas(Automovil[] vecAutomoviles) { //he de mirar esto muy duro
-		int posMin, comparison;
+	public static void ordenaPorMarca(Automovil[] vecAutomoviles) {
+		int comparison;
 		Automovil aux;
 
-		for (int i = 0; i < vecAutomoviles.length && vecAutomoviles[i] != null; i++){
-			posMin = i;
-			for (int j = i + 1; j < vecAutomoviles.length && vecAutomoviles[j] != null; j++) {
-				comparison = vecAutomoviles[posMin].getMarca().compareTo(vecAutomoviles[j].getMarca());
-			if ( comparison > 0) {
-				posMin = j;
-				
+		for (int i = 0; i < vecAutomoviles.length && vecAutomoviles[i] != null; i++) {
+			for (int j = 0; j < vecAutomoviles.length && vecAutomoviles[j] != null; j++) {
+				comparison = vecAutomoviles[i].getMarca().compareTo(vecAutomoviles[j].getMarca());
+				if (comparison < 0) {
+					aux = vecAutomoviles[i];
+					vecAutomoviles[i] = vecAutomoviles[j];
+					vecAutomoviles[j] = aux;
+				}
 			}
-			if (posMin != i) {
-				aux = new Automovil(vecAutomoviles[i].getMarca(), vecAutomoviles[i].getModelo(), vecAutomoviles[i].getCilindrada(), vecAutomoviles[i].getPrecio());
-				vecAutomoviles[i] = new Automovil(vecAutomoviles[posMin].getMarca(),vecAutomoviles[posMin].getModelo(), vecAutomoviles[posMin].getCilindrada(), vecAutomoviles[posMin].getPrecio());
-				vecAutomoviles[j].setMarca(aux.getMarca());
-				vecAutomoviles[j].setModelo(aux.getModelo());
-				vecAutomoviles[j].setCilindrada(aux.getCilindrada());
-				vecAutomoviles[j].setPrecio(aux.getPrecio());
-			}
+
 		}
 	}
 
+	public static void ordenaPorModelo(Automovil[] vecAutomoviles) {
+		int comparison;
+		Automovil aux;
+
+		for (int i = 0; i < vecAutomoviles.length && vecAutomoviles[i] != null; i++) {
+			for (int j = 0; j < vecAutomoviles.length && vecAutomoviles[j] != null; j++) {
+				comparison = vecAutomoviles[i].getMarca().compareTo(vecAutomoviles[j].getMarca());
+				if (comparison < 0) {
+					aux = vecAutomoviles[i];
+					vecAutomoviles[i] = vecAutomoviles[j];
+					vecAutomoviles[j] = aux;
+				}else if(comparison == 0) {
+					comparison = vecAutomoviles[i].getModelo().compareTo(vecAutomoviles[j].getModelo());
+					if (comparison < 0) {
+						aux = vecAutomoviles[i];
+						vecAutomoviles[i] = vecAutomoviles[j];
+						vecAutomoviles[j] = aux;
+					}
+				}
+			}
+
+		}
+
 	}
+	
+	public static void ordenaPorCilindrada(Automovil[] vecAutomoviles) {
+		int comparison;
+		Automovil aux;
+
+		for (int i = 0; i < vecAutomoviles.length && vecAutomoviles[i] != null; i++) {
+			for (int j = 0; j < vecAutomoviles.length && vecAutomoviles[j] != null; j++) {
+				comparison = vecAutomoviles[i].getCilindrada().compareTo(vecAutomoviles[j].getCilindrada());
+				if (comparison < 0) {
+					aux = vecAutomoviles[i];
+					vecAutomoviles[i] = vecAutomoviles[j];
+					vecAutomoviles[j] = aux;
+				}
+			}
+
+		}
+
+	}
+	
+	public static void ordenaPorPrecio(Automovil[] vecAutomoviles) {
+		int comparison;
+		Automovil aux;
+
+		for (int i = 0; i < vecAutomoviles.length && vecAutomoviles[i] != null; i++) {
+			for (int j = 0; j < vecAutomoviles.length && vecAutomoviles[j] != null; j++) {
+				comparison = vecAutomoviles[i].getPrecio().compareTo(vecAutomoviles[j].getPrecio());
+				if (comparison < 0) {
+					aux = vecAutomoviles[i];
+					vecAutomoviles[i] = vecAutomoviles[j];
+					vecAutomoviles[j] = aux;
+				}
+			}
+
+		}
+
+	}	
+	
 }
